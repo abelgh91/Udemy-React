@@ -9,7 +9,6 @@ const Usuario = () =>{
     return (
         <>
         <Titulo />
-        <Titulo />
         {country && <p>Tú eres de: {country}</p>}
         <Parrafo>Tu lista de amigos:</Parrafo>
         <ul>

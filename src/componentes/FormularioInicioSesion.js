@@ -48,7 +48,7 @@ const FormularioInicioSesion = (props) => {
                 />
             </div>
             {/*<button type="submit"className={styles.boton}>Iniciar Sesión</button>*/}
-            <Boton largo type="submit">Iniciar Sesión</Boton>
+            <Boton largo={true.toString()} type="submit">Iniciar Sesión</Boton>
         </form>
     )
 }

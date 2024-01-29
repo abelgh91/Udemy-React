@@ -22,8 +22,8 @@ const Boton = styled.button`
     color: #fff;
     `}
 
-    ${props => props.marginTop && css`margin-top: 10px`}
-    ${props => props.marginRight && css`margin-right: 10px`}
+    ${props => props.margintop && css`margin-top: 10px`}
+    ${props => props.marginright && css`margin-right: 10px`}
 `;
 
 export default Boton;
