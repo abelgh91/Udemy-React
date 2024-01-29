@@ -1,13 +1,25 @@
-import React from 'react';
+import React, { useState } from 'react';
 import ReactDOM from 'react-dom/client';
 import Usuario from './componentes/Usuario';
-
-const sesion = true;
+import FormularioInicioSesion from './componentes/FormularioInicioSesion'
+import ContadorFuncional from './componentes/ContadorFuncional';
 
 const App = () => {
+  const [sesion, cambiarEstadoSesion] = useState(true);
   return(
     <>
-    {sesion === true ? <Usuario /> : <p>No has iniciado sesión</p>}
+    {sesion === true ? 
+    <div>
+      <Usuario />
+      {<ContadorFuncional cantidadAIncrementar={100} cantidadADisminuir={20}/>}
+      {/*<ContadorClass cantidadAIncrementar={100} cantidadADisminuir={20}/>*/}
+      <button onClick={()=> cambiarEstadoSesion(false)}>Cerrar sesión</button>
+    </div> 
+    : 
+    <div>
+      <p>No has iniciado sesión</p>
+      <FormularioInicioSesion cambiarEstadoSesion={cambiarEstadoSesion}/>
+    </div>}
     </>
   );
 };
