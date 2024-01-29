@@ -3,24 +3,26 @@ import ReactDOM from 'react-dom/client';
 import Usuario from './componentes/Usuario';
 import FormularioInicioSesion from './componentes/FormularioInicioSesion'
 import ContadorFuncional from './componentes/ContadorFuncional';
+import './index.css';
+import Boton from './elementos/Boton';
 
 const App = () => {
-  const [sesion, cambiarEstadoSesion] = useState(true);
+  const [sesion, cambiarEstadoSesion] = useState(false);
   return(
-    <>
+    <div className='contenedor'>
     {sesion === true ? 
     <div>
       <Usuario />
       {<ContadorFuncional cantidadAIncrementar={100} cantidadADisminuir={20}/>}
-      {/*<ContadorClass cantidadAIncrementar={100} cantidadADisminuir={20}/>*/}
-      <button onClick={()=> cambiarEstadoSesion(false)}>Cerrar sesión</button>
+      {/*<button onClick={()=> cambiarEstadoSesion(false)}>Cerrar sesión</button>*/}
+      <Boton largo marginTop onClick={()=> cambiarEstadoSesion(false)}>Cerrar sesión</Boton>
     </div> 
     : 
     <div>
-      <p>No has iniciado sesión</p>
       <FormularioInicioSesion cambiarEstadoSesion={cambiarEstadoSesion}/>
     </div>}
-    </>
+    </div>
+    
   );
 };
 
