@@ -1,7 +1,7 @@
-import React, { useContext } from 'react'
+import React from 'react'
 import posts from './../data/posts';
 import { NavLink } from 'react-router-dom';
-import { ContextoTema } from '../context/contextoTema';
+import Controles from './Controles';
 
 const Blog = () => {
     return ( 
@@ -14,6 +14,7 @@ const Blog = () => {
                         </li>
                 })}
             </ul>
+            <Controles />
         </div>
      );
 }

@@ -38,13 +38,16 @@ const ContenedorPrincipal = styled.div`
   max-width: 700px
 `;
 
-const Main = styled.main`
-  font-size: ${props => props.tema ? props.tema.fuente + 'px' : '16px'}
-  text-align: ${props => props.tema ? props.tema.alineado : 'right'}
+const Main = styled.main.attrs(props => ({
+  style: {
+    fontSize: props.tema ? props.tema.fuente + 'px' : '16px',
+    textAlign: props.tema ? props.tema.alineado : 'right'
+  }
+}))`
   background: #fff;
   padding: 40px;
-  border-raius: 10px;
-  box-shadow: 0 0 5px rgba(129, 129, 129, 0.1)
+  border-radius: 10px;
+  box-shadow: 0 0 5px rgba(129, 129, 129, 0.1);
 `;
- 
+
 export default App;
