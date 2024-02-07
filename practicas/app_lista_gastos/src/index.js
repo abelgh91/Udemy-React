@@ -10,10 +10,11 @@ import GastosPorCategoria from './componentes/GastosPorCategorias';
 import InicioSesion from './componentes/InicioSesion';
 import ListaDeGastos from './componentes/ListaDeGastos';
 import RegistroUsuarios from './componentes/RegistroUsuarios';
-import {Helmet} from "react-helmet"
+import { Helmet } from "react-helmet"
 import favicon from './imagenes/logo.png'
 import Fondo from './elementos/Fondo';
-
+import { AuthProvider } from './contextos/AuthContext';
+import RutaPrivada from './componentes/RutaPrivada';
 
 WebFont.load({
   google: {
@@ -21,24 +22,31 @@ WebFont.load({
   }
 });
 
+const Index = () => {
+  return (
+	<>
+		<Helmet>
+			<link rel="shortcut icon" href={favicon} type="image/x-icon"/>
+		</Helmet>
+		<AuthProvider>
+				<BrowserRouter>
+					<Contenedor>
+						<Routes>
+							<Route path="/iniciar-sesion" element={<InicioSesion/>}/>
+							<Route path="/crear-cuenta" element={<RegistroUsuarios/>}/>
+
+							<Route path="/categorias" element={<RutaPrivada><GastosPorCategoria /></RutaPrivada>}/>
+							<Route path="/lista" element={<RutaPrivada><ListaDeGastos /></RutaPrivada>} />
+							<Route path="/editar/:id" element={<RutaPrivada><EditarGasto /></RutaPrivada>} />
+							<Route path="/" element={<RutaPrivada><App /></RutaPrivada>} />
+						</Routes>
+					</Contenedor>
+			</BrowserRouter>
+		</AuthProvider>
+		<Fondo />
+	</>
+  );
+}
+
 const root = ReactDOM.createRoot(document.getElementById('root'));
-root.render(
-    <React.StrictMode>
-      <Helmet>
-        <link rel="shortcut icon" href={favicon} type="image/x-icon" />
-      </Helmet>
-      <BrowserRouter>
-        <Contenedor>
-          <Routes>
-            <Route path="/iniciar-sesion" element={<InicioSesion/>} />
-            <Route path="/crear-cuenta" element={<RegistroUsuarios/>} />
-            <Route path="/categorias" element={<GastosPorCategoria/>} />
-            <Route path="/lista" element={<ListaDeGastos/>} />
-            <Route path="/editar/:id" element={<EditarGasto/>} />
-            <Route path="/" element={<App/>} />
-          </Routes>
-        </Contenedor>
-      </BrowserRouter>
-      <Fondo />
-    </React.StrictMode>
-);
+root.render(<Index />)
