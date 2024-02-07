@@ -1,10 +1,11 @@
-import React from 'react'
+import React, { useState } from 'react'
 import {Helmet} from 'react-helmet'
 import {Header, Titulo, ContenedorHeader} from './../elementos/Header'
 import Boton from '../elementos/Boton'
 import {ContenedorBoton, Input, Formulario} from './../elementos/ElementosDeFormulario'
 import {ReactComponent as SvgLogin} from './../imagenes/registro.svg'
 import styled from 'styled-components'
+
 
 const Svg = styled(SvgLogin)`
 width: 100%;
@@ -13,6 +14,15 @@ margin-bottom: 1.25rem;
 `;
 
 const RegistroUsuarios = () => {
+
+    const [correo, establecerCorreo] = useState('')
+    const [password, establecerPassword] = useState('')
+    const [password2, establecerPassword2] = useState('')
+
+    const handleChange = (e) => {
+        console.log(e)
+    }
+
     return ( 
         <>
             <Helmet>
@@ -30,11 +40,11 @@ const RegistroUsuarios = () => {
             </Header>
             <Formulario>
                 <Svg />
-                <Input type="email" name="email" placeholder="Correo Electrónico" />
-                <Input type="password" name="password" placeholder="Contraseña" />
-                <Input type="password2" name="password2" placeholder="Repetir Contraseña" />
+                <Input type="email" name="email" placeholder="Correo Electrónico" value={correo} onChange={handleChange} />
+                <Input type="password" name="password" placeholder="Contraseña" value={password} onChange={handleChange} />
+                <Input type="password2" name="password2" placeholder="Repetir Contraseña" value={password2} onChange={handleChange} />
                 <ContenedorBoton>
-                    <Boton as="button" primario type="submit">Crear Cuenta</Boton>
+                    <Boton as="button" primario="true" type="submit">Crear Cuenta</Boton>
                 </ContenedorBoton>
             </Formulario>
         </>
