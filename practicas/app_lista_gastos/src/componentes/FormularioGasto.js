@@ -41,7 +41,7 @@ const FormularioGasto = ({gasto}) => {
         if(e.target.name === 'descripcion'){
             cambiarInputDescripcion(e.target.value)
         }else if(e.target.name === 'cantidad'){
-            cambiarInputCantidad(e.target.value.replace(/[^0-9,]/g, ''))
+            cambiarInputCantidad(e.target.value.replace(/[^0-9.]/g, ''))
         }
     }
 
